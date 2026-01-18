@@ -34,6 +34,9 @@ ALLOWED_HOSTS = [
     "hostel-pulse.onrender.com",
 ]
 
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
 CSRF_TRUSTED_ORIGINS = [
     "https://hostel-pulse.onrender.com",
 ]
