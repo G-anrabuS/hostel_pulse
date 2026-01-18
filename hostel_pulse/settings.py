@@ -31,11 +31,11 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
-    "hostel-pulse.render.com",
+    "hostel-pulse.onrender.com",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://hostel-pulse.render.com",
+    "https://hostel-pulse.onrender.com",
 ]
 
 # Application definition
