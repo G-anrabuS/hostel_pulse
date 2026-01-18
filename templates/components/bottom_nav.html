@@ -1,0 +1,26 @@
+<!-- Bottom Navigation Component -->
+<nav
+    class="fixed bottom-0 left-0 right-0 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border-t border-gray-200/50 dark:border-gray-700/50 shadow-2xl z-50">
+    <div class="max-w-4xl mx-auto flex justify-around py-3">
+        <a href="{% url 'dashboard' %}"
+            class="flex flex-col items-center p-3 {% if active_page == 'dashboard' %}text-blue-600 bg-blue-50 dark:bg-blue-900/20{% else %}text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700/50{% endif %} rounded-xl transition-all duration-200 hover:scale-110">
+            <span class="text-xl mb-1">🏠</span>
+            <span class="text-xs font-medium">Dashboard</span>
+        </a>
+        <a href="{% url 'vibe_map' %}"
+            class="flex flex-col items-center p-3 {% if active_page == 'vibe_map' %}text-blue-600 bg-blue-50 dark:bg-blue-900/20{% else %}text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700/50{% endif %} rounded-xl transition-all duration-200 hover:scale-110">
+            <span class="text-xl mb-1">🗺️</span>
+            <span class="text-xs font-medium">Vibe Map</span>
+        </a>
+        <a href="{% url 'rewards' %}"
+            class="flex flex-col items-center p-3 {% if active_page == 'rewards' %}text-blue-600 bg-blue-50 dark:bg-blue-900/20{% else %}text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700/50{% endif %} rounded-xl transition-all duration-200 hover:scale-110">
+            <span class="text-xl mb-1">🏆</span>
+            <span class="text-xs font-medium">Rewards</span>
+        </a>
+        <a href="{% url 'settings_page' %}"
+            class="flex flex-col items-center p-3 {% if active_page == 'settings' %}text-blue-600 bg-blue-50 dark:bg-blue-900/20{% else %}text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700/50{% endif %} rounded-xl transition-all duration-200 hover:scale-110">
+            <span class="text-xl mb-1">⚙️</span>
+            <span class="text-xs font-medium">Settings</span>
+        </a>
+    </div>
+</nav>

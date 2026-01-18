@@ -21,9 +21,21 @@ from accounts import views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+    # Authentication
+    path('', views.login_page, name='login_page'),
     path('login/', views.login_page, name='login'),
-    path('home/', views.home, name='home'),
     path('logout/', views.logout_view, name='logout'),
-
     path('auth/', include('social_django.urls', namespace='social')),
+    
+    # Pages
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('vibe-map/', views.vibe_map, name='vibe_map'),
+    path('rewards/', views.rewards, name='rewards'),
+    path('settings/', views.settings_page, name='settings_page'),
+    path('home/', views.home, name='home'),  # Redirect to dashboard
+    
+    # API Endpoints
+    path('api/change-mood/', views.change_mood, name='change_mood'),
+    path('api/sync/', views.sync_data, name='sync_data'),
+    path('api/toggle-theme/', views.toggle_theme, name='toggle_theme'),
 ]

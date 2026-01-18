@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}HostelPulse - Vibe Map{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-800 shadow-sm p-4">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-xl font-bold text-gray-900 dark:text-white">Hostel Vibe Map</h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto p-4 pb-24">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
+            <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-6 text-center">
+                Current Hostel Zones
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {% for zone in zones %}
+                <div class="bg-{{ zone.color }}-100 dark:bg-{{ zone.color }}-900/20 rounded-lg p-6 text-center">
+                    <div class="text-4xl mb-2">{{ zone.emoji }}</div>
+                    <h3 class="font-medium text-gray-900 dark:text-white mb-1">{{ zone.name }}</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">{{ zone.vibe }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            <p class="text-center text-gray-500 dark:text-gray-400 mt-6 text-sm">
+                No people shown • Zones update based on activity patterns
+            </p>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    {% include 'components/bottom_nav.html' with active_page='vibe_map' %}
+</div>
+{% endblock %}

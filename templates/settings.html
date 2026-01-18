@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block title %}HostelPulse - Settings{% endblock %}
+
+{% block content %}
+<div
+    class="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-indigo-900/20 dark:via-purple-900/20 dark:to-pink-900/20 relative overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-5">
+        <div
+            class="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full blur-3xl">
+        </div>
+        <div
+            class="absolute top-40 right-20 w-24 h-24 bg-gradient-to-br from-pink-400 to-red-500 rounded-full blur-2xl">
+        </div>
+        <div
+            class="absolute bottom-20 left-1/4 w-40 h-40 bg-gradient-to-br from-green-400 to-blue-500 rounded-full blur-3xl">
+        </div>
+        <div
+            class="absolute bottom-40 right-10 w-28 h-28 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full blur-2xl">
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header
+        class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-lg p-4 border-b border-gray-200/50 dark:border-gray-700/50">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="p-2 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl shadow-lg">
+                    {% include 'components/logo.html' with size=32 %}
+                </div>
+                <div>
+                    <h1
+                        class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                        Settings</h1>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Customize your experience</p>
+                </div>
+            </div>
+            <a href="{% url 'dashboard' %}"
+                class="p-3 rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 hover:from-gray-200 hover:to-gray-300 dark:hover:from-gray-600 dark:hover:to-gray-500 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-110">
+                <span class="text-lg">✕</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto p-4 pb-32 space-y-6">
+        <!-- About Us -->
+        <div
+            class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50 p-6 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
+            <div class="flex items-center space-x-3 mb-4">
+                <div class="p-2 bg-gradient-to-br from-green-500 to-blue-500 rounded-lg shadow-lg">
+                    <span class="text-white text-lg">ℹ️</span>
+                </div>
+                <h2 class="text-lg font-semibold text-gray-900 dark:text-white">About HostelPulse</h2>
+            </div>
+            <div class="text-gray-700 dark:text-gray-300 space-y-4">
+                <p>
+                    HostelPulse is a comprehensive wellness platform designed specifically for students living in
+                    hostels.
+                    We understand the unique challenges of student life and how maintaining balance between academics,
+                    social life, and personal well-being can be difficult.
+                </p>
+                <p>
+                    Our app helps you track your daily habits, monitor your wellness patterns, and make informed
+                    decisions
+                    to improve your overall balance. From sleep tracking to class attendance, step counting to mood
+                    monitoring,
+                    HostelPulse provides insights that help you build healthier routines and achieve better academic
+                    performance.
+                </p>
+            </div>
+        </div>
+
+        <!-- Support -->
+        <div
+            class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50 p-6 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
+            <div class="flex items-center space-x-3 mb-4">
+                <div class="p-2 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg shadow-lg">
+                    <span class="text-white text-lg">💬</span>
+                </div>
+                <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Support</h2>
+            </div>
+            <div class="space-y-4">
+                <div
+                    class="flex items-center space-x-3 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors duration-200">
+                    <div class="p-2 bg-blue-500 rounded-lg">
+                        <span class="text-white text-sm">📞</span>
+                    </div>
+                    <div>
+                        <p class="font-medium text-gray-900 dark:text-white text-sm">Contact Number</p>
+                        <a href="tel:+917439317476"
+                            class="text-blue-600 dark:text-blue-400 hover:underline text-sm font-medium">
+                            +91 7439317476
+                        </a>
+                    </div>
+                </div>
+                <div
+                    class="flex items-center space-x-3 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors duration-200">
+                    <div class="p-2 bg-green-500 rounded-lg">
+                        <span class="text-white text-sm">✉️</span>
+                    </div>
+                    <div>
+                        <p class="font-medium text-gray-900 dark:text-white text-sm">Email</p>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=roupyadeepghosal@gmail.com"
+                            target="_blank" rel="noopener noreferrer"
+                            class="text-green-600 dark:text-green-400 hover:underline text-sm font-medium">
+                            roupyadeepghosal@gmail.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logout -->
+        <div
+            class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl shadow-xl border border-red-200/50 dark:border-red-800/50 p-6 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
+            <div class="flex items-center space-x-3 mb-4">
+                <div class="p-2 bg-gradient-to-br from-red-500 to-orange-500 rounded-lg shadow-lg">
+                    <span class="text-white text-lg">🚪</span>
+                </div>
+                <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Account</h2>
+            </div>
+            <a href="{% url 'logout' %}"
+                class="block w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-medium py-3 px-4 rounded-xl transition-all duration-200 text-sm shadow-lg hover:shadow-xl transform hover:scale-[1.02] text-center">
+                🚪 Logout
+            </a>
+            <p class="text-sm text-gray-600 dark:text-gray-300 mt-3 text-center">
+                This will log you out and return to the home page
+            </p>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    {% include 'components/bottom_nav.html' with active_page='settings' %}
+</div>
+{% endblock %}
