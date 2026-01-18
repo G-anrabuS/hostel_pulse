@@ -20,12 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%88!*h28+pewup9w0^*xn4%d#&d8xr2hr7hdb^x9g+bqb0*#iw'
+SECRET_KEY = os.getenv(SECRET_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
 
 # Application definition
@@ -79,6 +79,21 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# ========================
+# MongoDB Configuration
+# ========================
+
+from pymongo import MongoClient
+
+MONGO_URI = os.getenv("MONGO_URI")
+
+if not MONGO_URI:
+    raise Exception("MONGO_URI not found in environment variables")
+
+mongo_client = MongoClient(MONGO_URI)
+mongo_db = mongo_client["hostel_pulse"]
+
 
 
 # Password validation
