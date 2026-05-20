@@ -5,6 +5,9 @@ from datetime import datetime, timedelta
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from social_django.models import UserSocialAuth
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def get_google_credentials(user):
@@ -149,7 +152,7 @@ def get_sleep_data(user, date=None):
         return None
         
     except Exception as e:
-        print(f"Error fetching sleep data: {e}")
+        logger.error(f"Error fetching sleep data: {e}")
         return None
 
 
@@ -215,7 +218,7 @@ def get_step_count(user, date=None):
         return 0
         
     except Exception as e:
-        print(f"Error fetching step count: {e}")
+        logger.error(f"Error fetching step count: {e}")
         return None
 
 
@@ -274,7 +277,7 @@ def get_activity_minutes(user, date=None):
         return 0
         
     except Exception as e:
-        print(f"Error fetching activity minutes: {e}")
+        logger.error(f"Error fetching activity minutes: {e}")
         return None
 
 

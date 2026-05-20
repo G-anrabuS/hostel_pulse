@@ -34,8 +34,9 @@ ALLOWED_HOSTS = [
     "hostel-pulse.onrender.com",
 ]
 
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# Security settings - only enforce HTTPS in production
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
 
 CSRF_TRUSTED_ORIGINS = [
     "https://hostel-pulse.onrender.com",
@@ -105,7 +106,6 @@ DATABASES = {
 
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
-import certifi
 
 MONGO_URI = os.getenv("MONGO_URI")
 

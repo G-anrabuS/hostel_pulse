@@ -6,6 +6,9 @@ from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from social_django.models import UserSocialAuth
 import re
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def get_google_credentials(user):
@@ -69,7 +72,7 @@ def get_todays_events(user, date=None):
         return events
         
     except Exception as e:
-        print(f"Error fetching calendar events: {e}")
+        logger.error(f"Error fetching calendar events: {e}")
         return []
 
 

@@ -1,4 +1,7 @@
 from django.conf import settings
+import logging
+
+logger = logging.getLogger(__name__)
 
 def save_user_to_mongodb(strategy, details, user=None, *args, **kwargs):
     # Never break login
@@ -27,4 +30,4 @@ def save_user_to_mongodb(strategy, details, user=None, *args, **kwargs):
         )
 
     except Exception as e:
-        print("MongoDB error during login (ignored):", e)
+        logger.error(f"MongoDB error during login (ignored): {e}")

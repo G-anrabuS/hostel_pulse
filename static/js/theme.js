@@ -20,7 +20,17 @@ function toggleTheme() {
             'X-CSRFToken': getCookie('csrftoken')
         },
         body: JSON.stringify({ theme: newTheme })
-    });
+    })
+        .then(response => {
+            if (!response.ok) {
+                console.warn('Failed to save theme preference to server');
+            }
+            return response.json();
+        })
+        .catch(error => {
+            // Theme still works locally even if server save fails
+            console.warn('Theme saved locally, but server sync failed:', error);
+        });
 }
 
 // Get CSRF token from cookies

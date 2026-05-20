@@ -9,12 +9,23 @@ function changeMood(mood) {
         },
         body: JSON.stringify({ mood: mood })
     })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to update mood');
+            }
+            return response.json();
+        })
         .then(data => {
             if (data.success) {
                 // Reload page to show new mood
                 window.location.reload();
+            } else {
+                alert('Failed to update mood. Please try again.');
             }
+        })
+        .catch(error => {
+            console.error('Error changing mood:', error);
+            alert('Network error. Please check your connection and try again.');
         });
 }
 
@@ -35,15 +46,40 @@ function syncData() {
             'X-CSRFToken': getCookie('csrftoken')
         }
     })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Sync request failed');
+            }
+            return response.json();
+        })
         .then(data => {
             setTimeout(() => {
                 text.classList.remove('spin');
                 btn.disabled = false;
-                text.innerHTML = '🔄 Sync My Life';
 
-                // Reload page to show updated data
-                window.location.reload();
+                if (data.success) {
+                    text.innerHTML = '✅ Synced!';
+                    // Reload page to show updated data
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 500);
+                } else {
+                    text.innerHTML = '❌ Sync Failed';
+                    alert(data.message || 'Failed to sync data. Please check your Google permissions.');
+                    setTimeout(() => {
+                        text.innerHTML = '🔄 Sync My Life';
+                    }, 2000);
+                }
+            }, 1000);
+        })
+        .catch(error => {
+            console.error('Error syncing data:', error);
+            text.classList.remove('spin');
+            btn.disabled = false;
+            text.innerHTML = '❌ Network Error';
+            alert('Network error. Please check your connection and try again.');
+            setTimeout(() => {
+                text.innerHTML = '🔄 Sync My Life';
             }, 2000);
         });
 }

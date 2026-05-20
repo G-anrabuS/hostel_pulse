@@ -3,6 +3,9 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 import json
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def login_page(request):
@@ -36,7 +39,7 @@ def dashboard(request):
                 dashboard_data = get_user_dashboard_data(request.user)
                 today_data = dashboard_data.get('today')
         except Exception as e:
-            print(f"Auto-sync error: {e}")
+            logger.error(f"Auto-sync error: {e}")
     
     # If still no data after auto-sync, show message
     if not today_data:
@@ -204,7 +207,7 @@ def sync_data(request):
                     'message': 'Unable to sync data. Please check your Google Fit and Calendar permissions.'
                 })
         except Exception as e:
-            print(f"Sync error: {e}")
+            logger.error(f"Sync error: {e}")
             return JsonResponse({
                 'success': False,
                 'message': f'Sync failed: {str(e)}'

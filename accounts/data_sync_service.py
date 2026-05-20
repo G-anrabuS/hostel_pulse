@@ -9,6 +9,9 @@ from .mongodb_models import (
     initialize_user_achievements, get_user_achievements, unlock_achievement,
     update_achievement_progress, get_user_streak, update_user_streak
 )
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def calculate_balance_score(wellness_data):
@@ -109,7 +112,7 @@ def sync_user_data(user):
         return wellness_data
         
     except Exception as e:
-        print(f"Error syncing user data: {e}")
+        logger.error(f"Error syncing user data: {e}")
         return None
 
 

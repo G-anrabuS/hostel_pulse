@@ -3,6 +3,9 @@ Gemini API Service for generating personalized wellness suggestions
 """
 import os
 from django.conf import settings
+import logging
+
+logger = logging.getLogger(__name__)
 
 try:
     from google import genai
@@ -10,7 +13,7 @@ try:
     GEMINI_AVAILABLE = True
 except ImportError:
     GEMINI_AVAILABLE = False
-    print("WARNING: google-genai not installed. Install with: pip install google-genai")
+    logger.warning("google-genai not installed. Install with: pip install google-genai")
 
 
 # Fallback suggestions for when Gemini API is unavailable
@@ -51,7 +54,7 @@ def initialize_gemini():
         client = genai.Client(api_key=settings.GEMINI_API_KEY)
         return client
     except Exception as e:
-        print(f"Error initializing Gemini: {e}")
+        logger.error(f"Error initializing Gemini: {e}")
         return False
 
 
@@ -76,7 +79,7 @@ def generate_wellness_suggestions(mood, balance_score, user_name="Student", well
             if suggestions:
                 return suggestions
         except Exception as e:
-            print(f"Gemini API error: {e}")
+            logger.error(f"Gemini API error: {e}")
     
     # Fallback to static suggestions
     return FALLBACK_SUGGESTIONS.get(mood, FALLBACK_SUGGESTIONS['balanced'])
@@ -185,7 +188,7 @@ FORMAT: Return ONLY 3 suggestions, one per line, nothing else."""
         return None
         
     except Exception as e:
-        print(f"Error generating with Gemini: {e}")
+        logger.error(f"Error generating with Gemini: {e}")
         return None
 
 
